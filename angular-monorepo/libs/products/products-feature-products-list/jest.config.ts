@@ -1,9 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'products',
-  preset: '../../jest.preset.js',
+  displayName: 'products-feature-products-list',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/libs/products',
+  coverageDirectory:
+    '../../../coverage/libs/products/products-feature-products-list',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

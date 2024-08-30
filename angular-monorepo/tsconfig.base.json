@@ -16,6 +16,15 @@
     "baseUrl": ".",
     "paths": {
       "@angular-monorepo/products": ["libs/products/src/index.ts"],
+      "@angular-monorepo/products-data-access": [
+        "libs/products/products-data-access/src/index.ts"
+      ],
+      "@angular-monorepo/products-feature-details": [
+        "libs/products/products-feature-details/src/index.ts"
+      ],
+      "@angular-monorepo/products-feature-products-list": [
+        "libs/products/products-feature-products-list/src/index.ts"
+      ],
       "@angular-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"]
     }
   },
