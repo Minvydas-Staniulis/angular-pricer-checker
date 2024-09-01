@@ -29,9 +29,13 @@
       "@angular-monorepo/products-feature-products-list": [
         "libs/products/products-feature-products-list/src/index.ts"
       ],
+      "@angular-monorepo/products-types": [
+        "libs/products/products-types/src/index.ts"
+      ],
       "@angular-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@angular-monorepo/types": ["libs/shared/common/types/src/index.ts"],
-      "@angular-monorepo/utils": ["libs/shared/common/utils/src/index.ts"]
+      "@angular-monorepo/utils": ["libs/shared/common/utils/src/index.ts"],
+      "@shared/common/constants": ["libs/shared/common/constants/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
