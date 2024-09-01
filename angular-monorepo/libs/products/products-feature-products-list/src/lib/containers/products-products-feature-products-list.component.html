@@ -11,12 +11,16 @@
 
   <ng-container matColumnDef="last_price">
     <th mat-header-cell *matHeaderCellDef>Last Price</th>
-    <td mat-cell *matCellDef="let product">{{ product.lastPrice }}</td>
+    <td mat-cell *matCellDef="let product">
+      {{ !!product.lastPrice ? product.lastPrice : '0' }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="last_price_date">
     <th mat-header-cell *matHeaderCellDef>LastPriceDate</th>
-    <td mat-cell *matCellDef="let product">{{ product.lastPriceDate }}</td>
+    <td mat-cell *matCellDef="let product">
+      {{ !!product.lastPriceDate ? product.lastPriceDate : '-' }}
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
