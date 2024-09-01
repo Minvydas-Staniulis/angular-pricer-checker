@@ -9,6 +9,16 @@
     <td mat-cell *matCellDef="let product">{{ product.category }}</td>
   </ng-container>
 
+  <ng-container matColumnDef="last_price">
+    <th mat-header-cell *matHeaderCellDef>Last Price</th>
+    <td mat-cell *matCellDef="let product">{{ product.lastPrice }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="last_price_date">
+    <th mat-header-cell *matHeaderCellDef>LastPriceDate</th>
+    <td mat-cell *matCellDef="let product">{{ product.lastPriceDate }}</td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
   <tr mat-row *matRowDef="let row; columns: columns"></tr>
 </table>

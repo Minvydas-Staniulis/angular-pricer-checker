@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsProductsFeatureProductsListComponent {
   productsList$: Observable<Product[]>;
-  columns: string[] = ['name', 'category'];
+  columns: string[] = ['name', 'category', 'last_price', 'last_price_date'];
 
   constructor(private service: ProductsService) {
     this.productsList$ = this.service.getProductsList();

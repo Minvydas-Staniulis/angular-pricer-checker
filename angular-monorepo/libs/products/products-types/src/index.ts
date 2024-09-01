@@ -3,4 +3,6 @@ export interface Product {
   name: string;
   category: string;
   imageUri: string;
+  lastPrice: number | null;
+  lastPriceDate: Date | null;
 }
