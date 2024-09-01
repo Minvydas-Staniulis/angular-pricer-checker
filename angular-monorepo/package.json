@@ -15,6 +15,7 @@
     "@angular/platform-browser": "~18.2.0",
     "@angular/platform-browser-dynamic": "~18.2.0",
     "@angular/router": "~18.2.0",
+    "@ngrx/effects": "^18.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -30,6 +31,10 @@
     "@angular/compiler-cli": "~18.2.0",
     "@angular/language-service": "~18.2.0",
     "@angular/material": "^18.2.2",
+    "@ngrx/eslint-plugin": "^18.0.2",
+    "@ngrx/store": "^18.0.2",
+    "@nrwl/cli": "^15.9.3",
+    "@nrwl/workspace": "^19.6.4",
     "@nx/angular": "19.6.4",
     "@nx/cypress": "19.6.4",
     "@nx/eslint": "19.6.4",

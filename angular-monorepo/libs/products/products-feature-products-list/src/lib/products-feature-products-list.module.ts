@@ -4,11 +4,15 @@ import { ProductsProductsFeatureProductsListComponent } from './containers/produ
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { ProductsProductsFeatureProductsListComponentRoutes } from './lib.routes';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProductsDataAccessModule } from '@angular-monorepo/products-data-access';
 
 @NgModule({
   imports: [
     CommonModule,
     MatTableModule,
+    MatTooltipModule,
+    ProductsDataAccessModule,
     RouterModule.forChild(ProductsProductsFeatureProductsListComponentRoutes),
   ],
   declarations: [ProductsProductsFeatureProductsListComponent],
