@@ -10,7 +10,9 @@
 
   <ng-container matColumnDef="category">
     <th mat-header-cell *matHeaderCellDef>Category</th>
-    <td mat-cell *matCellDef="let product"></td>
+    <td mat-cell *matCellDef="let product">
+      {{ product.category }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="last_price">
