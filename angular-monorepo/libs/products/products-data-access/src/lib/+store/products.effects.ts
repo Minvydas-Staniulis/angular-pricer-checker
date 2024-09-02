@@ -15,7 +15,6 @@ export class ProductEffects {
     this.actions$.pipe(
       ofType(fetchAllProducts),
       mergeMap((): Observable<Action> => {
-        console.log('bbs');
         return this.productService.getProductsList().pipe(
           map((productsList) => {
             return fetchedAllProducts({

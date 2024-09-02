@@ -1,6 +1,6 @@
 import { Product } from '@angular-monorepo/products-types';
 import { HttpErrorResponse } from '@angular/common/http';
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import {
   fetchAllProducts,
   fetchAllProductsFailed,
@@ -56,3 +56,7 @@ export const productReducer = createReducer(
     })
   )
 );
+
+export function reducer(state: ProductState | undefined, action: Action) {
+  return productReducer(state, action);
+}

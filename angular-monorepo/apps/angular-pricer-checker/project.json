@@ -4,20 +4,17 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/angular-pricer-checker/src",
+  "standalone": false,
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/angular-pricer-checker",
         "index": "apps/angular-pricer-checker/src/index.html",
         "browser": "apps/angular-pricer-checker/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/angular-pricer-checker/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -79,9 +76,7 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/angular-pricer-checker/jest.config.ts"
       }

@@ -16,10 +16,10 @@ export class ProductFacade {
 
   productStore$ = this.store.pipe(select(selectProductState));
 
-  productsList$ = this.productStore$.pipe(select(selectProductList));
-  isLoading$ = this.productStore$.pipe(select(selectIsLoading));
-  isLoaded$ = this.productStore$.pipe(select(selectIsLoaded));
-  errors$ = this.productStore$.pipe(select(selectError));
+  productsList$ = this.store.pipe(select(selectProductList));
+  isLoading$ = this.store.pipe(select(selectIsLoading));
+  isLoaded$ = this.store.pipe(select(selectIsLoaded));
+  errors$ = this.store.pipe(select(selectError));
 
   fetchAllProducts() {
     this.store.dispatch(fetchAllProducts());
