@@ -1,6 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { productsFeatureKey, ProductState } from './products.reducer';
-
 import * as fromProduct from './products.reducer';
 
 export const selectProductState =
@@ -10,20 +8,20 @@ export const selectProductState =
 
 export const selectProductList = createSelector(
   selectProductState,
-  (state: ProductState) => state?.productsList
+  (state: fromProduct.ProductState) => state?.productsList
 );
 
 export const selectIsLoading = createSelector(
   selectProductState,
-  (state: ProductState) => state.isLoading
+  (state: fromProduct.ProductState) => state.isLoading
 );
 
 export const selectIsLoaded = createSelector(
   selectProductState,
-  (state: ProductState) => state.isLoaded
+  (state: fromProduct.ProductState) => state.isLoaded
 );
 
 export const selectError = createSelector(
   selectProductState,
-  (state: ProductState) => state.error
+  (state: fromProduct.ProductState) => state.error
 );
