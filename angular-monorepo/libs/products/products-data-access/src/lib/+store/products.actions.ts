@@ -15,3 +15,18 @@ export const fetchAllProductsFailed = createAction(
   `${api} Fetch All Products Failed`,
   props<{ error: HttpErrorResponse }>()
 );
+
+export const fetchProduct = createAction(
+  `${api} Fetch Product by ID`,
+  props<{ id: string }>()
+);
+
+export const fetchedProduct = createAction(
+  `${api} Fetched Product by ID`,
+  props<{ product: Product }>()
+);
+
+export const fetchProductFailed = createAction(
+  `${api} Fetch Product Failed`,
+  props<{ error: HttpErrorResponse }>()
+);

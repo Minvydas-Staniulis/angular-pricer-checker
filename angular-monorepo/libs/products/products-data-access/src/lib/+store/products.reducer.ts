@@ -5,6 +5,9 @@ import {
   fetchAllProducts,
   fetchAllProductsFailed,
   fetchedAllProducts,
+  fetchedProduct,
+  fetchProduct,
+  fetchProductFailed,
 } from './products.actions';
 
 export const productsFeatureKey = 'products';
@@ -29,6 +32,7 @@ export const productReducer = createReducer(
   initialState,
   on(
     fetchAllProducts,
+    fetchProduct,
     (state): ProductState => ({
       ...state,
       isLoading: true,
@@ -47,7 +51,18 @@ export const productReducer = createReducer(
     })
   ),
   on(
+    fetchedProduct,
+    (state, { product }): ProductState => ({
+      ...state,
+      selectedProduct: product,
+      isLoading: false,
+      isLoaded: true,
+      error: null,
+    })
+  ),
+  on(
     fetchAllProductsFailed,
+    fetchProductFailed,
     (state, { error }): ProductState => ({
       ...state,
       isLoading: false,

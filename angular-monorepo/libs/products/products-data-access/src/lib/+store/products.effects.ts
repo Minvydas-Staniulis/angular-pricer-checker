@@ -6,6 +6,9 @@ import {
   fetchAllProducts,
   fetchAllProductsFailed,
   fetchedAllProducts,
+  fetchedProduct,
+  fetchProduct,
+  fetchProductFailed,
 } from './products.actions';
 import { catchError, map, mergeMap, Observable, of } from 'rxjs';
 
@@ -24,6 +27,18 @@ export class ProductEffects {
           catchError((error) => of(fetchAllProductsFailed({ error })))
         );
       })
+    )
+  );
+
+  loadOneProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fetchProduct),
+      mergeMap(({ id }) =>
+        this.productService.getProductById(id).pipe(
+          map((product) => fetchedProduct({ product })),
+          catchError((error) => of(fetchProductFailed({ error })))
+        )
+      )
     )
   );
 

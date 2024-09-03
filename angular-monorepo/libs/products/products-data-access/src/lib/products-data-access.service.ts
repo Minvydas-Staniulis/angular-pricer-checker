@@ -8,16 +8,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  endpointUrl = '';
+  endpointUrl = `${this.apiUrl}/Products`;
 
   constructor(
     private http: HttpClient,
     @Inject(API_TOKEN) private apiUrl: string
-  ) {
-    this.endpointUrl = `${this.apiUrl}/Products`;
-  }
+  ) {}
 
   getProductsList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.endpointUrl);
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.endpointUrl}/${id}`);
   }
 }
