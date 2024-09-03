@@ -7,4 +7,17 @@ export const ProductsProductsFeatureProductsListComponentRoutes: Route[] = [
     pathMatch: 'full',
     component: ProductsProductsFeatureProductsListComponent,
   },
+  {
+    path: 'products',
+    component: ProductsProductsFeatureProductsListComponent,
+    children: [
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('@angular-monorepo/products-feature-details').then(
+            (m) => m.ProductsFeatureDetailsModule
+          ),
+      },
+    ],
+  },
 ];

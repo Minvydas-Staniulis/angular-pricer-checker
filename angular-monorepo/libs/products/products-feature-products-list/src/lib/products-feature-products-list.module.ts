@@ -6,12 +6,16 @@ import { MatTableModule } from '@angular/material/table';
 import { ProductsProductsFeatureProductsListComponentRoutes } from './lib.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductsDataAccessModule } from '@angular-monorepo/products-data-access';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
     CommonModule,
     MatTableModule,
     MatTooltipModule,
+    MatButtonModule,
+    MatMenuModule,
     ProductsDataAccessModule,
     RouterModule.forChild(ProductsProductsFeatureProductsListComponentRoutes),
   ],

@@ -8,14 +8,21 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ProductsProductsFeatureProductsListComponent implements OnInit {
   productsList$ = this.facade.productsList$;
-  columns: string[] = ['name', 'category', 'last_price', 'last_price_date'];
+  columns: string[] = [
+    'name',
+    'category',
+    'last_price',
+    'last_price_date',
+    'actions',
+  ];
 
   constructor(private facade: ProductFacade) {}
 
   ngOnInit(): void {
+    this.initData();
+  }
+
+  initData(): void {
     this.facade.fetchAllProducts();
-    this.productsList$.subscribe((value) => {
-      console.log(value);
-    });
   }
 }
