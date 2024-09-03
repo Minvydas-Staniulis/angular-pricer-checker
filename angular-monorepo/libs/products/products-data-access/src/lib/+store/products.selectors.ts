@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromProduct from './products.reducer';
+import { Product } from '@angular-monorepo/products-types';
 
 export const selectProductState =
   createFeatureSelector<fromProduct.ProductState>(
@@ -11,9 +12,14 @@ export const selectProductList = createSelector(
   (state: fromProduct.ProductState) => state?.productsList
 );
 
-export const selectProduct = createSelector(
+export const selectProduct = (id: string) =>
+  createSelector(selectProductList, (products: Product[]) =>
+    products.find((product) => product.id === id)
+  );
+
+export const selectSelectedProduct = createSelector(
   selectProductState,
-  (state: fromProduct.ProductState) => state?.selectedProduct
+  (state) => state.selectedProduct
 );
 
 export const selectIsLoading = createSelector(

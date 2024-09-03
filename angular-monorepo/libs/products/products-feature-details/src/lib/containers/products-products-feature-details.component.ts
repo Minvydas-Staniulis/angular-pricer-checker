@@ -13,7 +13,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { filter, of, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'lib-products-products-feature-details',
@@ -24,10 +24,11 @@ export class ProductsProductsFeatureDetailsComponent
   implements OnInit, OnDestroy
 {
   @ViewChild('content', { static: true }) content!: TemplateRef<HTMLElement>;
+  dialogRef!: MatDialogRef<any>;
 
   product$ = this.facade.product$;
-  subs = new Subscription();
-  dialogRef!: MatDialogRef<any>;
+  isLoaded$ = this.facade.isLoaded$;
+  subs$ = new Subscription();
 
   get id(): string | null {
     return this.route.snapshot.paramMap.get('id');
@@ -46,7 +47,26 @@ export class ProductsProductsFeatureDetailsComponent
   }
 
   initData(): void {
-    this.facade.fetchProductById(this.id ?? '');
+    this.subs$.add(
+      this.facade
+        .fetchProductById(this.id ?? '')
+        .pipe(
+          switchMap((product) => {
+            if (!product) {
+              this.facade.fetchProductById(this.id ?? '');
+              return this.isLoaded$.pipe(
+                filter((isLoaded) => isLoaded),
+                switchMap(() => this.facade.product$)
+              );
+            } else {
+              return of(product);
+            }
+          })
+        )
+        .subscribe((product) => {
+          console.log(product);
+        })
+    );
   }
 
   openDialog(): void {
@@ -61,7 +81,7 @@ export class ProductsProductsFeatureDetailsComponent
   }
 
   afterClosed(): void {
-    this.subs.add(
+    this.subs$.add(
       this.dialogRef.afterClosed().subscribe(() => {
         this.router.navigate(['../..'], {
           relativeTo: this.route,
@@ -72,6 +92,6 @@ export class ProductsProductsFeatureDetailsComponent
   }
 
   ngOnDestroy(): void {
-    this.subs.unsubscribe();
+    this.subs$.unsubscribe();
   }
 }

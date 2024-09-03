@@ -8,8 +8,9 @@ import {
   selectProduct,
   selectProductList,
   selectProductState,
+  selectSelectedProduct,
 } from './products.selectors';
-import { fetchAllProducts, fetchProduct } from './products.actions';
+import { fetchAllProducts } from './products.actions';
 
 @Injectable({ providedIn: 'root' })
 export class ProductFacade {
@@ -18,7 +19,7 @@ export class ProductFacade {
   productStore$ = this.store.pipe(select(selectProductState));
 
   productsList$ = this.store.pipe(select(selectProductList));
-  product$ = this.store.pipe(select(selectProduct));
+  product$ = this.store.pipe(select(selectSelectedProduct));
   isLoading$ = this.store.pipe(select(selectIsLoading));
   isLoaded$ = this.store.pipe(select(selectIsLoaded));
   errors$ = this.store.pipe(select(selectError));
@@ -28,6 +29,6 @@ export class ProductFacade {
   }
 
   fetchProductById(id: string) {
-    this.store.dispatch(fetchProduct({ id }));
+    return this.store.pipe(select(selectProduct(id)));
   }
 }
