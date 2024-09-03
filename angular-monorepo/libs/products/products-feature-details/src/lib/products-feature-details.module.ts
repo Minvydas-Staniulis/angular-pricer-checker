@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ProductsProductsFeatureDetailsComponent } from './containers/products-products-feature-details.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,15 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-
-    RouterModule.forChild(routes),
-  ],
+  imports: [CommonModule, MatDialogModule, RouterModule.forChild(routes)],
   declarations: [ProductsProductsFeatureDetailsComponent],
   exports: [ProductsProductsFeatureDetailsComponent],
 })

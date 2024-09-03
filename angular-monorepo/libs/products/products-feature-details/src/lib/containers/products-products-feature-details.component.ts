@@ -1,4 +1,5 @@
 import { ProductFacade } from '@angular-monorepo/products-data-access';
+import { Product } from '@angular-monorepo/products-types';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,7 +29,9 @@ export class ProductsProductsFeatureDetailsComponent
 
   product$ = this.facade.product$;
   isLoaded$ = this.facade.isLoaded$;
+  isLoading$ = this.facade.isLoading$;
   subs$ = new Subscription();
+  product!: Product | null;
 
   get id(): string | null {
     return this.route.snapshot.paramMap.get('id');
@@ -64,7 +67,7 @@ export class ProductsProductsFeatureDetailsComponent
           })
         )
         .subscribe((product) => {
-          console.log(product);
+          this.product = product;
         })
     );
   }

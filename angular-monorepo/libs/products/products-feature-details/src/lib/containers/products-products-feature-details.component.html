@@ -1,7 +1,29 @@
 <ng-template #content>
-  <h2 mat-dialog-title></h2>
-  <mat-dialog-content> </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
-  </mat-dialog-actions>
+  <ng-container *ngIf="isLoaded$ | async; else loadingTemplate">
+    <ng-container *ngIf="!!product">
+      <h2 mat-dialog-title>{{ product.name }}</h2>
+      <mat-dialog-content>
+        <p>{{ product.category }}</p>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+      </mat-dialog-actions>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loadingTemplate>
+    <ng-container *ngIf="isLoading$ | async; else errorTemplate">
+      <h2 mat-dialog-title>Loading...</h2>
+      <mat-dialog-content>
+        <p>Please wait while we load the product details.</p>
+      </mat-dialog-content>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #errorTemplate>
+    <h2 mat-dialog-title>Error</h2>
+    <mat-dialog-content>
+      <p>There was an issue loading the product. Please try again.</p>
+    </mat-dialog-content>
+  </ng-template>
 </ng-template>
